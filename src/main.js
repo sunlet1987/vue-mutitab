@@ -8,6 +8,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import './assets/css/reset.css'
 import './assets/css/index.css'
 import http from './utils/http.js'
+
 Vue.config.productionTip = false
 
 Vue.use(ElementUI);
@@ -15,6 +16,7 @@ Vue.use(ElementUI);
 Vue.use(http);
 
 import './mixin'
+
 new Vue({
   router,
   store,

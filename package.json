@@ -38,8 +38,15 @@
     ],
     "parserOptions": {
       "parser": "babel-eslint"
+    },
+    "rules": {
+      "no-console": "off",
+      "no-unused-vars": "off"
     }
   },
+  "eslintIgnore": [
+    "*.md"
+  ],
   "postcss": {
     "plugins": {
       "autoprefixer": {}

@@ -75,11 +75,11 @@ demo中增加了类似浏览器标签功能、拖拽、右键等。
  import router from '../router' //app路由配置文件
  import Vue from 'vue'
 
- var maxtab = 6;//tab打开最大数量配置
- var defaulttab = {//默认打开页面
+ var maxTab = 6;//tab打开最大数量配置
+ var defaultTab = {//默认打开页面
     title: '首页',
-    routername: 'home.index',//路由名称
-    routerparams: null,//路由参数
+    routerName: 'home.index',//路由名称
+    routerParams: null,//路由参数
     closable: false
  };
 ```

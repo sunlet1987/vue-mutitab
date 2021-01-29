@@ -16,47 +16,49 @@
             text-color="#fff"
             :unique-opened="true"
           >
-              <template v-for='(menu1,index1) in menus' >
-                  <el-submenu :key="index1" v-if="menu1" :index="index1">
-                      <template slot="title">
-                          <i :class="menu1.icon"></i>
-                          <span slot="title">{{menu1.title}}</span>
-                      </template>
-                      <template v-for='(menu2,index2) in menu1.children' >
-                          <el-submenu :key="index2" v-if="menu2.children" :index="menu2.index">
-                              <template slot="title">
-                                  <i :class="menu2.icon" v-if="menu2.icon"></i>
-                                  <span slot="title">{{menu2.title}}</span>
-                              </template>
-                              <el-menu-item v-for="(menu3,index3) in menu2.children" :key="index3" :index="menu3.index">{{menu3.title}}</el-menu-item>
-                          </el-submenu>
-                          <el-menu-item :key="index2" v-else :index="menu2.index">
-                              <i :class="menu2.icon" v-if="menu2.icon"></i>
-                              <span slot="title">{{menu2.title}}</span>
-                          </el-menu-item>
-                      </template>
+            <template v-for='(menu1,index1) in menus'>
+              <el-submenu :key="index1" v-if="menu1" :index="index1">
+                <template slot="title">
+                  <i :class="menu1.icon"></i>
+                  <span slot="title">{{ menu1.title }}</span>
+                </template>
+                <template v-for='(menu2,index2) in menu1.children'>
+                  <el-submenu :key="index2" v-if="menu2.children" :index="menu2.index">
+                    <template slot="title">
+                      <i :class="menu2.icon" v-if="menu2.icon"></i>
+                      <span slot="title">{{ menu2.title }}</span>
+                    </template>
+                    <el-menu-item v-for="(menu3,index3) in menu2.children" :key="index3" :index="menu3.index">
+                      {{ menu3.title }}
+                    </el-menu-item>
                   </el-submenu>
-                  <el-menu-item :key="index1" v-else :index="menu1.index">
-                      <i :class="menu1.icon"></i>
-                      <span slot="title">{{menu1.title}}</span>
+                  <el-menu-item :key="index2" v-else :index="menu2.index">
+                    <i :class="menu2.icon" v-if="menu2.icon"></i>
+                    <span slot="title">{{ menu2.title }}</span>
                   </el-menu-item>
-              </template>
+                </template>
+              </el-submenu>
+              <el-menu-item :key="index1" v-else :index="menu1.index">
+                <i :class="menu1.icon"></i>
+                <span slot="title">{{ menu1.title }}</span>
+              </el-menu-item>
+            </template>
             <!--<el-submenu index="1">-->
-              <!--<template slot="title">-->
-                <!--<i class="el-icon-menu"></i>-->
-                <!--<span slot="title">权限管理</span>-->
-              <!--</template>-->
-              <!--<el-menu-item index="1-1">系统配置</el-menu-item>-->
-              <!--<el-menu-item index="1-2">模块配置</el-menu-item>-->
-              <!--<el-menu-item index="1-3">权限配置</el-menu-item>-->
+            <!--<template slot="title">-->
+            <!--<i class="el-icon-menu"></i>-->
+            <!--<span slot="title">权限管理</span>-->
+            <!--</template>-->
+            <!--<el-menu-item index="1-1">系统配置</el-menu-item>-->
+            <!--<el-menu-item index="1-2">模块配置</el-menu-item>-->
+            <!--<el-menu-item index="1-3">权限配置</el-menu-item>-->
             <!--</el-submenu>-->
             <!--<el-menu-item index="2">-->
-              <!--<i class="el-icon-document"></i>-->
-              <!--<span slot="title">角色管理</span>-->
+            <!--<i class="el-icon-document"></i>-->
+            <!--<span slot="title">角色管理</span>-->
             <!--</el-menu-item>-->
             <!--<el-menu-item index="3">-->
-              <!--<i class="el-icon-location"></i>-->
-              <!--<span slot="title">人员管理</span>-->
+            <!--<i class="el-icon-location"></i>-->
+            <!--<span slot="title">人员管理</span>-->
             <!--</el-menu-item>-->
           </el-menu>
         </el-aside>
@@ -74,27 +76,28 @@ import { mapActions } from "vuex";
 import TabView from "../components/TabView.vue";
 import menus from './menuconfig'
 import HeaderBar from "../components/HeaderBar/index";
+
 export default {
-  name: "home",
-  data: function() {
+  name:"home",
+  data() {
     return {
       isCollapse: false,
-      mainboxH: 0,
-        menus:[]
+      menus:[]
     };
   },
   components: {
     TabView,
     HeaderBar
   },
-    created(){
-      setTimeout( () => {
-          this.menus.push(...menus)
-      },100)
-    },
-  mounted() {},
+  created() {
+    setTimeout(() => {
+      this.menus.push(...menus)
+    }, 100)
+  },
+  mounted() {
+  },
   methods: {
-      ...mapActions("tab", ["reflush"]),
+    ...mapActions("tab", ["reflush"]),
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
     },
@@ -102,23 +105,27 @@ export default {
       this.isCollapse = !this.isCollapse;
     },
     openTab(key, keyPath) {
-        var items= this.menus;
-        var item = null;
-        var ids = key.split('.').map(i=>parseInt(i));
-        ids.forEach(i=>{
-            if(items[i].children) items = items[i].children;
-            else item = items[i];
-        })
-        if(item.routername){
-            if(this.$router.currentRoute.name==item.routername){
-                this.reflush();
-            }
-            else {
-                this.$store.commit("tab/DelCache", item.routername);
-                this.$router.push({name:item.routername});
-            }
+      let items = this.menus;
+      let item = null;
+      const ids = key.split('.').map(i => parseInt(i));
+      ids.forEach(i => {
+        if (items[i].children) {
+          items = items[i].children;
         }
-        else console.warn('该菜单未配置路由')
+        else {
+          item = items[i];
+        }
+      })
+      if (item.routerName) {
+        if (this.$router.currentRoute.name === item.routerName) {
+          this.reflush();
+        } else {
+          this.$store.commit("tab/DelCache", item.routerName);
+          this.$router.push({ name: item.routerName });
+        }
+      } else {
+        console.warn('该菜单未配置路由')
+      }
     }
   }
 };
@@ -128,6 +135,7 @@ export default {
 #content_box {
   height: 100%;
 }
+
 .el-header {
   background-color: #409eff;
   color: #333;
@@ -135,6 +143,7 @@ export default {
   height: 50px !important;
   padding: 0;
 }
+
 .aside_box {
   height: 100%;
   background-color: #2e4050;
@@ -142,10 +151,11 @@ export default {
 }
 
 .el-menu-vertical-demo:not(.el-menu--collapse) {
-  min-width: 180px;/* 左边导航宽度 */
+  min-width: 180px; /* 左边导航宽度 */
   min-height: 100%;
 }
-.el-main {
+
+.home_main {
   background-color: #fff;
   color: #333;
   height: 100%;

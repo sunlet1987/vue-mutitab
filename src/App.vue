@@ -1,8 +1,8 @@
 <template>
   <div id='app'>
-      <!-- <keep-alive exclude='login'> -->
-      <router-view/>
-      <!-- </keep-alive> -->
+    <!-- <keep-alive exclude='login'> -->
+    <router-view/>
+    <!-- </keep-alive> -->
   </div>
 </template>
 
@@ -19,7 +19,6 @@ export default {
 
 <style>
 #app {
-
   height: 100%;
 }
 </style>
