@@ -228,7 +228,7 @@ UpgradeLog*.htm
 # Microsoft Fakes
 FakesAssemblies/
 
-# GhostDoc plugin setting file
+# GhostDoc utils setting file
 *.GhostDoc.xml
 
 # Node.js Tools for Visual Studio

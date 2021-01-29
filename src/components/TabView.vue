@@ -1,5 +1,5 @@
 <template>
-  <div class="tabbody">
+  <div class="tab-body">
     <div class='tab_box'>
        <span
                v-for="(tab,index) in Tabs"
@@ -14,10 +14,10 @@
     </span>
     </div>
       <el-main>
-    <keep-alive>
+      <keep-alive>
         <router-view v-if="isRouterAlive" ref='cur'/>
-    </keep-alive>
-      </el-main>
+      </keep-alive>
+    </el-main>
   </div>
 </template>
 
@@ -51,7 +51,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.tabbody {
+.tab-body {
   height: 100%;
   overflow: hidden;
 }

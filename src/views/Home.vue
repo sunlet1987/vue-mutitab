@@ -17,7 +17,7 @@
             :unique-opened="true"
           >
               <template v-for='(menu1,index1) in menus' >
-                  <el-submenu :key="index1" v-if="menu1.children" :index="menu1.index">
+                  <el-submenu :key="index1" v-if="menu1" :index="index1">
                       <template slot="title">
                           <i :class="menu1.icon"></i>
                           <span slot="title">{{menu1.title}}</span>

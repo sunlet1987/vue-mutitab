@@ -1,9 +1,9 @@
 import axios from 'axios'
 import router from '../router'
 /**
-         * 请求拦截器
-         * 
-         */
+ * 请求拦截器
+ *
+ */
 axios.interceptors.request.use(config => {//在此处统一配置公共参数
 
     //  let appId = process.env.appId; //appid

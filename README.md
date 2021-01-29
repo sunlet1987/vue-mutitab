@@ -52,19 +52,19 @@ demo中增加了类似浏览器标签功能、拖拽、右键等。
           path: '/home/index',
           name: 'home.index',
           meta :{title:"首页"},
-          component: () => import(/* webpackChunkName: "about" */ './views/Tabs/Index.vue')
+          component: () => import(/* webpackChunkName: "about" */ './views/rightManage/Index.vue')
         },
         {
           path: '/home/test',
           name: 'home.test',
           meta :{title:"测试tab"},//此处为规则配置页面 title为Tab显示的标题
-          component: () => import(/* webpackChunkName: "about" */ './views/Tabs/Test.vue')
+          component: () => import(/* webpackChunkName: "about" */ './views/rightManage/Test.vue')
         },
         {
           path: '/home/hasparam/:name',
           name: 'home.hasparam',
           meta :{title:"带参数"},//此处为规则配置页面 title为Tab显示的标题
-          component: () => import(/* webpackChunkName: "about" */ './views/Tabs/HasParam.vue'),
+          component: () => import(/* webpackChunkName: "about" */ './views/rightManage/HasParam.vue'),
           props:true
         }
       ]
